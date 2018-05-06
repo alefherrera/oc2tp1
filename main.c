@@ -14,6 +14,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+struct nodo_abb {
+    int valor;
+    int cantidad;
+    struct nodo_abb *izq;
+    struct nodo_abb *der;
+};
+
+struct nodo_abb agregar_abb(struct nodo_abb *arbol, int val);
+void borrar_abb(struct nodo_abb *a);
+void mostrar_abb(struct nodo_abb *a);
+
 /*
  * 
  */
