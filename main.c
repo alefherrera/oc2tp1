@@ -21,7 +21,7 @@ struct nodo_abb {
     int cantidad;
 };
 
-struct nodo_abb* agregar_abb(struct nodo_abb **arbol, int val);
+struct nodo_abb* agregar_abb(struct nodo_abb *arbol, int val);
 void borrar_abb(struct nodo_abb *a);
 void mostrar_abb(struct nodo_abb *a);
 
@@ -31,17 +31,17 @@ struct nodo_abb *root;
  * 
  */
 int main(int argc, char** argv) {
-    agregar_abb(root, 3);
+    root = agregar_abb(root, 3);
     agregar_abb(root, 2);
-    struct nodo_abb* nodoABorrar = agregar_abb(&root, 4);
+    struct nodo_abb* nodoABorrar = agregar_abb(root, 4);
     agregar_abb(root, 6);
     agregar_abb(root, 7);
     agregar_abb(root, 8);
     
     mostrar_abb(root);
     printf("\r\n");
-    borrar_abb(nodoABorrar);
-    mostrar_abb(root);
+    // borrar_abb(nodoABorrar);
+    // mostrar_abb(root);
     return (EXIT_SUCCESS);
 }
 
@@ -58,13 +58,12 @@ struct nodo_abb* agregar_abb(struct nodo_abb* arbol, int val) {
         int valor = arbol->valor;
         if (val == valor) {
             arbol->cantidad++;
-            return arbol;
         } else if (val < valor) {
-            return agregar_abb(arbol->izq, val);
-            
+            arbol->izq = agregar_abb(arbol->izq, val);
         } else {
-            return agregar_abb(arbol->der, val);
+            arbol->der = agregar_abb(arbol->der, val);
         }
+        return arbol;
     }
 }
 
