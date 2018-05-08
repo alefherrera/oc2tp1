@@ -23,6 +23,7 @@ struct nodo_abb {
 
 struct nodo_abb* agregar_abb(struct nodo_abb *arbol, int val);
 struct nodo_abb* crear_nodo(int val);
+struct nodo_abb* crear_subnodo(struct nodo_abb** puntero, int val);
 void borrar_abb(struct nodo_abb *a);
 void mostrar_abb(struct nodo_abb *a);
 
@@ -52,21 +53,20 @@ struct nodo_abb* agregar_abb(struct nodo_abb* arbol, int val) {
         arbol->cantidad++;
         return arbol;
     } else if (val < valor) {
-        if (arbol->izq == NULL) {
-            arbol->izq = crear_nodo(val);
-            return arbol->izq;
-        } else {
-            return agregar_abb(arbol->izq, val);
-        }
+        return crear_subnodo(&arbol->izq, val);
     } else {
-        if (arbol->der == NULL) {
-            arbol->der = crear_nodo(val);
-            return arbol->der;
-        } else {
-            return agregar_abb(arbol->der, val);
-        }
+        return crear_subnodo(&arbol->der, val);
     }
     return arbol;
+}
+
+struct nodo_abb* crear_subnodo(struct nodo_abb** puntero, int val) {
+    if (*puntero == NULL) {
+        *puntero = crear_nodo(val);
+        return *puntero;
+    } else {
+        return agregar_abb(*puntero, val);
+    }
 }
 
 struct nodo_abb* crear_nodo(int val) {
