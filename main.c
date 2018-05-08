@@ -90,11 +90,8 @@ void mostrar_abb(struct nodo_abb *a) {
 
 void borrar_abb(struct nodo_abb *a) {
     if (a != NULL) {
-        borrar_abb(a->izq);
-        a->izq = NULL;
+        borrar_abb(a->izq);       
         borrar_abb(a->der);
-        a->der = NULL;
         free(a);
-        a = NULL;
     }
 }
