@@ -102,12 +102,16 @@ _borrar_abb:
     ret
 
 borra_nodo:
-    push word [eax + 12]         ;obtengo el puntero izq
+    push eax
+    push dword [eax + 8]         ;obtengo el puntero izq
     call _borrar_abb
     add esp, 4
-    push word [eax + 16]         ;obtengo el puntero der
+    pop eax
+    push eax
+    push dword [eax + 12]         ;obtengo el puntero der
     call _borrar_abb
     add esp, 4
+    pop eax
     push eax
     call _free
     add esp, 4
