@@ -9,22 +9,8 @@ extern _crear_subnodo_der
 section .data
 vistaNodo db "{%d:%d", 0
 cierraNodo db "}", 0
-texto db "eax = %d", 10, 0
-textoBx db "ebx = %d", 10, 0
-textoDx db "edx = %d", 10, 0
 
 section .text
-global CMAIN
-CMAIN:
-    ;write your code here
-    xor eax, eax
-
-
-    ret
-
-
-
-
 ;agregar_abb(struct nodo* nodo, int valor)
 ;struct nodo
 ;0  valor
@@ -130,38 +116,4 @@ borra_nodo:
 
 
 
-    ;===================
-
-
-mostrarAX:
-
-    push edx
-    push eax
-    push texto
-    call _printf
-    add esp, 4
-    pop eax
-    pop edx
-    ret
-
-mostrarBX:
-    push eax
-    push edx
-    push ebx
-    push textoBx
-    call _printf
-    add esp, 4
-    pop ebx
-    pop edx
-    pop eax
-    ret
-
-mostrarDX:
-    push eax
-    push edx
-    push textoDx
-    call _printf
-    add esp, 4
-    pop edx
-    pop eax
-    ret
+;===================
