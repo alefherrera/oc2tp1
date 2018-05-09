@@ -34,7 +34,7 @@ struct nodo_abb *root;
  */
 int main(int argc, char** argv) {
 
-    printf("INICIO");
+    printf("INICIO\r\n" );
     //iterar por los parametros recibidos
 
     root = crear_nodo(3);

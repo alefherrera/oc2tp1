@@ -7,15 +7,19 @@ extern _crear_subnodo_izq
 extern _crear_subnodo_der
 
 section .data
-vistaNodo db "{%d:%d", 0
+vistaNodo db "{%d:%d", 10, 0
 cierraNodo db "}", 0
+texto db "eax = %d", 10, 0
+textoBx db "ebx = %d", 10, 0
+textoDx db "edx = %d", 10, 0
 
 section .text
 global CMAIN
 CMAIN:
     ;write your code here
     xor eax, eax
-    
+
+
     ret
 
 
@@ -63,24 +67,42 @@ _mostrar_abb:
     mov ebp, esp    
     mov eax, [ebp + 8]      ;EAX puntero al nodo
     mov ebx, [eax]          ;EBX valor
-    mov ecx, [eax + 4]      ;ECX cantidad
+    mov edx, [eax + 4]      ;ECX cantidad
+
+    call mostrarAX
+    call mostrarBX
+    call mostrarDX
+
     cmp eax, 0
     jne imprime_nodo
     pop ebp
     ret
 
 imprime_nodo:
-    push ecx
+    push eax
+    push edx
     push ebx
     push vistaNodo
     call _printf
     add esp, 12
-    push word [eax + 12]         ;obtengo el puntero izq
+    pop eax
+
+    call mostrarAX
+    call mostrarBX
+    call mostrarDX
+
+    push eax
+    push dword [eax + 8]         ;obtengo el puntero izq
     call _mostrar_abb
     add esp, 4
-    push word [eax + 16]         ;obtengo el puntero der
+    pop eax
+
+    push eax
+    push dword [eax + 12]         ;obtengo el puntero der
     call _mostrar_abb
     add esp, 4
+    pop eax
+
     pop ebp
     ret
     
@@ -109,4 +131,38 @@ borra_nodo:
     
     
     
-    
+    ;===================
+
+
+mostrarAX:
+
+    push edx
+    push eax
+    push texto
+    call _printf
+    add esp, 4
+    pop eax
+    pop edx
+    ret
+
+mostrarBX:
+    push eax
+    push edx
+    push ebx
+    push textoBx
+    call _printf
+    add esp, 4
+    pop ebx
+    pop edx
+    pop eax
+    ret
+
+mostrarDX:
+    push eax
+    push edx
+    push textoDx
+    call _printf
+    add esp, 4
+    pop edx
+    pop eax
+    ret
