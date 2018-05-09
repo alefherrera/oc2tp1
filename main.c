@@ -25,7 +25,7 @@ struct nodo_abb* crear_nodo(int val);
 struct nodo_abb* crear_subnodo(struct nodo_abb** puntero, int val);
 struct nodo_abb* crear_subnodo_izq(struct nodo_abb* padre, int val);
 struct nodo_abb* crear_subnodo_der(struct nodo_abb* padre, int val);
-
+void mostrar_dfs(struct nodo_abb* arbol);
 
 struct nodo_abb *root;
 
@@ -33,23 +33,18 @@ struct nodo_abb *root;
  *
  */
 int main(int argc, char** argv) {
+    root = crear_nodo(5);
 
-    printf("INICIO\r\n" );
-    //iterar por los parametros recibidos
+    for (int i = 1; i < argc; i++) {
+      agregar_abb(root, atoi(argv[i]));
+    }
 
-    root = crear_nodo(3);
-    agregar_abb(root, 2);
-    struct nodo_abb* nodoABorrar = agregar_abb(root, 4);
-    agregar_abb(root, 6);
-    agregar_abb(root, 7);
-    agregar_abb(root, 8);
     mostrar_abb(root);
-
-    printf("\r\n");
-    borrar_abb(nodoABorrar);
-    // mostrar_abb(root);
+    mostrar_dfs(root);
     return (EXIT_SUCCESS);
 }
+
+
 
 /*
 struct nodo_abb* agregar_abb(struct nodo_abb* arbol, int val) {
@@ -90,6 +85,16 @@ struct nodo_abb* crear_nodo(int val) {
     ret->der = NULL;
     ret->izq = NULL;
     return ret;
+}
+
+void mostrar_dfs(struct nodo_abb* arbol) {
+  if (arbol->izq != NULL) {
+    mostrar_dfs(arbol->izq);
+  }
+  printf("\n%d", arbol->valor);
+  if (arbol->der != NULL) {
+    mostrar_dfs(arbol->der);
+  }
 }
 
 /*
