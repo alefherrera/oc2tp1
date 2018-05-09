@@ -7,7 +7,7 @@ extern _crear_subnodo_izq
 extern _crear_subnodo_der
 
 section .data
-vistaNodo db "{%d:%d", 10, 0
+vistaNodo db "{%d:%d", 0
 cierraNodo db "}", 0
 texto db "eax = %d", 10, 0
 textoBx db "ebx = %d", 10, 0
@@ -66,19 +66,15 @@ _mostrar_abb:
     push ebp
     mov ebp, esp    
     mov eax, [ebp + 8]      ;EAX puntero al nodo
-    mov ebx, [eax]          ;EBX valor
-    mov edx, [eax + 4]      ;ECX cantidad
-
-    call mostrarAX
-    call mostrarBX
-    call mostrarDX
-
     cmp eax, 0
     jne imprime_nodo
+
     pop ebp
     ret
 
 imprime_nodo:
+    mov ebx, [eax]          ;EBX valor
+    mov edx, [eax + 4]      ;ECX cantidad
     push eax
     push edx
     push ebx
@@ -86,10 +82,6 @@ imprime_nodo:
     call _printf
     add esp, 12
     pop eax
-
-    call mostrarAX
-    call mostrarBX
-    call mostrarDX
 
     push eax
     push dword [eax + 8]         ;obtengo el puntero izq
@@ -100,6 +92,12 @@ imprime_nodo:
     push eax
     push dword [eax + 12]         ;obtengo el puntero der
     call _mostrar_abb
+    add esp, 4
+    pop eax
+
+    push eax
+    push cierraNodo
+    call _printf
     add esp, 4
     pop eax
 
