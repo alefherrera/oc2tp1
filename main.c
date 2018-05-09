@@ -15,10 +15,10 @@
 #include <stdlib.h>
 
 struct nodo_abb {
-    struct nodo_abb *izq;
-    struct nodo_abb *der;
     int valor;
     int cantidad;
+    struct nodo_abb *izq;
+    struct nodo_abb *der;
 };
 
 struct nodo_abb* agregar_abb(struct nodo_abb *arbol, int val);
@@ -78,7 +78,7 @@ struct nodo_abb* crear_nodo(int val) {
     return ret;
 }
 
-void mostrar_abb(struct nodo_abb *a) {
+void mostrar_abb(struct nodo_abb* a) {
     if (a != NULL) {
         printf("{");
         printf("%d:%d", a->valor, a->cantidad);
@@ -88,9 +88,9 @@ void mostrar_abb(struct nodo_abb *a) {
     }
 }
 
-void borrar_abb(struct nodo_abb *a) {
+void borrar_abb(struct nodo_abb* a) {
     if (a != NULL) {
-        borrar_abb(a->izq);       
+        borrar_abb(a->izq);
         borrar_abb(a->der);
         free(a);
     }
