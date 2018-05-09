@@ -34,37 +34,38 @@ CMAIN:
 
 _agregar_abb:
     push ebp
-    mov ebp, esp    
+    mov ebp, esp
     mov eax, [ebp + 8]      ;EAX puntero al nodo
     mov ebx, [ebp + 12]     ;EBX valor
     mov ecx, [eax]
     cmp ebx, ecx
     jb agregar_nodo_izquierdo
     jg agregar_nodo_derecho
-    inc word [eax + 4]    
-    pop ebp 
+    inc word [eax + 4]
+    pop ebp
     ret
 
 agregar_nodo_izquierdo:
     push ebx
-    push eax      
+    push eax
     call _crear_subnodo_izq
     add esp, 8              ;borramos los parametros de la pila
     ;asumo que lo que me devuelve la funcion de C viene en EAX
     pop ebp
     ret
-    
+
 agregar_nodo_derecho:
     push ebx
-    push eax     
+    push eax
     call _crear_subnodo_der
+    add esp, 8
     pop ebp
     ret
-    
+
 
 _mostrar_abb:
     push ebp
-    mov ebp, esp    
+    mov ebp, esp
     mov eax, [ebp + 8]      ;EAX puntero al nodo
     cmp eax, 0
     jne imprime_nodo
@@ -103,11 +104,11 @@ imprime_nodo:
 
     pop ebp
     ret
-    
+
 
 _borrar_abb:
     push ebp
-    mov ebp, esp    
+    mov ebp, esp
     mov eax, [ebp + 8]      ;EAX puntero al nodo
     cmp eax, 0
     jne borra_nodo
@@ -122,14 +123,14 @@ borra_nodo:
     call _borrar_abb
     add esp, 4
     push eax
-    call _free    
+    call _free
     add esp, 4
     pop ebp
     ret
-    
-    
-    
-;===================
+
+
+
+    ;===================
 
 
 mostrarAX:

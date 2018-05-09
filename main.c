@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   main.c
  * Author: Ale
  *
@@ -30,7 +30,7 @@ struct nodo_abb* crear_subnodo_der(struct nodo_abb* padre, int val);
 struct nodo_abb *root;
 
 /*
- * 
+ *
  */
 int main(int argc, char** argv) {
 
@@ -38,17 +38,13 @@ int main(int argc, char** argv) {
     //iterar por los parametros recibidos
 
     root = crear_nodo(3);
+    agregar_abb(root, 2);
+    agregar_abb(root, 4);
+    agregar_abb(root, 6);
+    agregar_abb(root, 7);
+    agregar_abb(root, 8);
     mostrar_abb(root);
-    
-    /*    agregar_abb(root, 2);
-        agregar_abb(root, 4);
-        agregar_abb(root, 6);
-        agregar_abb(root, 7);
-        agregar_abb(root, 8);
-    
-    
-        mostrar_abb(root);
-     */
+
     printf("\r\n");
     // borrar_abb(nodoABorrar);
     // mostrar_abb(root);
