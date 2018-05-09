@@ -7,7 +7,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <io.h>
 
 struct nodo_abb {
     int valor;
@@ -34,18 +33,22 @@ struct nodo_abb *root;
  * 
  */
 int main(int argc, char** argv) {
-    
-    //iterar por los parametros recibidos
-    
-    
-    root = crear_nodo(3);
-    agregar_abb(root, 2);
-    struct nodo_abb* nodoABorrar = agregar_abb(root, 4);
-    agregar_abb(root, 6);
-    agregar_abb(root, 7);
-    agregar_abb(root, 8);
 
+    printf("INICIO");
+    //iterar por los parametros recibidos
+
+    root = crear_nodo(3);
     mostrar_abb(root);
+    
+    /*    agregar_abb(root, 2);
+        agregar_abb(root, 4);
+        agregar_abb(root, 6);
+        agregar_abb(root, 7);
+        agregar_abb(root, 8);
+    
+    
+        mostrar_abb(root);
+     */
     printf("\r\n");
     // borrar_abb(nodoABorrar);
     // mostrar_abb(root);
@@ -65,13 +68,13 @@ struct nodo_abb* agregar_abb(struct nodo_abb* arbol, int val) {
     }
     return arbol;
 }
-*/
+ */
 
 struct nodo_abb* crear_subnodo_izq(struct nodo_abb* padre, int val) {
     return crear_subnodo(&padre->izq, val);
 }
 
-struct nodo_abb* crear_subnodo_der(struct nodo_abb* padre,int val) {
+struct nodo_abb* crear_subnodo_der(struct nodo_abb* padre, int val) {
     return crear_subnodo(&padre->der, val);
 }
 
@@ -102,7 +105,7 @@ void mostrar_abb(struct nodo_abb* a) {
         printf("}");
     }
 }
-*/
+ */
 
 /*
 void borrar_abb(struct nodo_abb* a) {
@@ -112,4 +115,4 @@ void borrar_abb(struct nodo_abb* a) {
         free(a);
     }
 }
-*/
+ */
