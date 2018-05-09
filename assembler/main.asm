@@ -37,7 +37,7 @@ _agregar_abb:
     cmp ebx, ecx
     jb agregar_nodo_izquierdo
     jg agregar_nodo_derecho
-    inc [eax + 4]    
+    inc word [eax + 4]    
     pop ebp 
     ret
 
@@ -75,10 +75,10 @@ imprime_nodo:
     push vistaNodo
     call _printf
     add esp, 12
-    push [eax + 12]         ;obtengo el puntero izq
+    push word [eax + 12]         ;obtengo el puntero izq
     call _mostrar_abb
     add esp, 4
-    push [eax + 16]         ;obtengo el puntero der
+    push word [eax + 16]         ;obtengo el puntero der
     call _mostrar_abb
     add esp, 4
     pop ebp
@@ -95,10 +95,10 @@ _borrar_abb:
     ret
 
 borra_nodo:
-    push [eax + 12]         ;obtengo el puntero izq
+    push word [eax + 12]         ;obtengo el puntero izq
     call _borrar_abb
     add esp, 4
-    push [eax + 16]         ;obtengo el puntero der
+    push word [eax + 16]         ;obtengo el puntero der
     call _borrar_abb
     add esp, 4
     push eax

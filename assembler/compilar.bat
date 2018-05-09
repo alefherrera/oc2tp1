@@ -1,0 +1,1 @@
+nasm -o main.obj -f win32 .\main.asm
