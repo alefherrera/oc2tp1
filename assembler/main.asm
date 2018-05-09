@@ -33,13 +33,13 @@ agregar_nodo_izquierdo:
     push ebx
     push eax
     push ebx
-    push eax+8        
+    push [eax+8]
     call _crear_subnodo
     
 agregar_nodo_derecho:
     push ebx
     push eax
     push ebx
-    push eax+12        
+    push [eax+12]        
     call _crear_subnodo
     
