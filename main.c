@@ -90,8 +90,7 @@ struct nodo_abb* crear_nodo(int val) {
 
 void mostrar_abb(struct nodo_abb* a) {
     if (a != NULL) {
-        printf("{");
-        printf("%d:%d", a->valor, a->cantidad);
+        printf("{%d:%d", a->valor, a->cantidad);
         mostrar_abb(a->izq);
         mostrar_abb(a->der);
         printf("}");
