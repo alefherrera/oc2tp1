@@ -39,14 +39,14 @@ int main(int argc, char** argv) {
 
     root = crear_nodo(3);
     agregar_abb(root, 2);
-    agregar_abb(root, 4);
+    struct nodo_abb* nodoABorrar = agregar_abb(root, 4);
     agregar_abb(root, 6);
     agregar_abb(root, 7);
     agregar_abb(root, 8);
     mostrar_abb(root);
 
     printf("\r\n");
-    // borrar_abb(nodoABorrar);
+    borrar_abb(nodoABorrar);
     // mostrar_abb(root);
     return (EXIT_SUCCESS);
 }
