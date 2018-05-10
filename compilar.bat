@@ -1,3 +1,3 @@
 nasm -o main.obj -f win32 .\assembler\main.asm
 gcc -Wall -m32 -o programa.exe .\main.obj .\main.c
-.\programa.exe 8 54 17 5 70 2
+.\programa.exe < input.txt

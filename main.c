@@ -29,17 +29,25 @@ void mostrar_dfs(struct nodo_abb *arbol);
 
 struct nodo_abb *root;
 
-
 int main(int argc, char **argv)
 {
-    root = crear_nodo(atoi(argv[1]));
+    int *value;
+    int input = scanf("%d", value);
+    root = crear_nodo(*value);
 
-    for (int i = 2; i < argc; i++)
+    while ((input = scanf("%d", value)) > 0)
     {
-        agregar_abb(root, atoi(argv[i]));
+        agregar_abb(root, *value);
     }
 
-    mostrar_abb(root);
+    // root = crear_nodo(atoi(argv[1]));
+
+    // for (int i = 2; i < argc; i++)
+    // {
+    //     agregar_abb(root, atoi(argv[i]));
+    // }
+
+    //mostrar_abb(root);
     mostrar_dfs(root);
     return (EXIT_SUCCESS);
 }

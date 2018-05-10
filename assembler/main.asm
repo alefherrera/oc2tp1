@@ -25,8 +25,8 @@ _agregar_abb:
     mov ebx, [ebp + 12]     ;EBX valor
     mov ecx, [eax]
     cmp ebx, ecx
-    jb agregar_nodo_izquierdo
-    jg agregar_nodo_derecho
+    jl agregar_nodo_izquierdo
+    ja agregar_nodo_derecho
     inc word [eax + 4]
     pop ebp
     ret
@@ -117,7 +117,5 @@ borra_nodo:
     add esp, 4
     pop ebp
     ret
-
-
 
 ;===================
